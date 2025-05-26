@@ -1,4 +1,5 @@
 package riesgocrediticio.service;
 
-public class RiesgoServiceTest {
+public abstract class RiesgoServiceTest {
+    
 }
