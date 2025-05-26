@@ -36,8 +36,9 @@ public class RiesgoService {
         cliente = clienteRepository.save(cliente);
 
         // 3. Seleccionar evaluador dinámicamente usando Streams
+        Cliente finalCliente = cliente;
         EvaluadorRiesgo evaluador = evaluadores.stream()
-                .filter(e -> e.aplicaCliente(cliente))
+                .filter(e -> e.aplicaCliente(finalCliente))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("No se encontró evaluador apropiado"));
 

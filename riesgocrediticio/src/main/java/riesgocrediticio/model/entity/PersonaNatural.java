@@ -27,6 +27,11 @@ public class PersonaNatural extends Cliente {
         return edad >= 18;
     }
 
+    @Override
+    public double calcularCapacidadPago() {
+        return ingresoMensual * 0.35;
+    }
+
     public double calcularRatioDeuda() {
         return calcularTotalDeudas() / ingresoMensual;
     }

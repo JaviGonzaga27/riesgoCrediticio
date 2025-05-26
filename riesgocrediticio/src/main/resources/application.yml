@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bd-crediticio
+    url: jdbc:postgresql://localhost:5432/db-crediticio
     username: postgres
-    password: 12345
+    password: admin
   jpa:
     hibernate:
       ddl-auto: update #create-drop

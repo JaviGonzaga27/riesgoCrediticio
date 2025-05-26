@@ -1,10 +1,7 @@
 package riesgocrediticio.evaluator;
 
 import org.springframework.stereotype.Component;
-import riesgocrediticio.model.entity.Cliente;
-import riesgocrediticio.model.entity.PersonaJuridica;
-import riesgocrediticio.model.entity.PersonaNatural;
-import riesgocrediticio.model.entity.ResultadoEvaluacion;
+import riesgocrediticio.model.entity.*;
 
 @Component
 public abstract class EvaluadorRiesgo {
