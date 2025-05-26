@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import riesgocrediticio.model.dto.ClienteRequestDTO;
 import riesgocrediticio.model.entity.Cliente;
 import riesgocrediticio.service.ClienteService;
 
@@ -34,6 +35,33 @@ public class ClienteController {
             return new ResponseEntity<>(cliente.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // POST /api/clientes - Crear nuevo cliente
+    @PostMapping
+    public ResponseEntity<Cliente> crear(@RequestBody ClienteRequestDTO request) {
+        try {
+            Cliente cliente = clienteService.crear(request);
+            return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // PUT /api/clientes/{id} - Actualizar cliente
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente> actualizar(@PathVariable Long id,
+                                              @RequestBody ClienteRequestDTO request) {
+        try {
+            Cliente cliente = clienteService.actualizar(id, request);
+            return new ResponseEntity<>(cliente, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
