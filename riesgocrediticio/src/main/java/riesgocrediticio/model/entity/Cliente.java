@@ -33,8 +33,12 @@ public abstract class Cliente {
     @Column(name = "plazo_en_meses", nullable = false)
     private int plazoEnMeses;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HistorialEvaluacion> historialEvaluaciones;
+
     // Métodos abstractos requeridos
     public abstract double getIngresoReferencial();
+
     public abstract boolean esAptoParaCredito();
 
     // Método para calcular total de deudas
@@ -48,3 +52,4 @@ public abstract class Cliente {
     }
 
     public abstract double calcularCapacidadPago();
+}

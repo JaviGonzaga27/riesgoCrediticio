@@ -17,6 +17,11 @@ public class HistorialEvaluacion {
     @Column(name = "id")
     private Long id;
 
+    // Relación con Cliente
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
     @Column(name = "cliente_nombre", nullable = false, length = 100)
     private String clienteNombre;
 
